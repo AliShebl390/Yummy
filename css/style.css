@@ -164,14 +164,27 @@ nav {
 
 /* End meal details */
 /* Search */
-@media only screen and (max-width: 900px) {
-    .search-container {
-        margin-left: 76px;
-    }
+.search-container input {
+    background-color: #121212;
+    color: white;
+    box-shadow: 0 0 10px #6767676d;
+}
 
-    .container .content {
-        margin-left: 76px;
-    }
+.search-container input:focus {
+    background-color: #121212;
+    color: white;
+}
+
+.search-container input::placeholder {
+    color: white;
+}
+
+.search-container {
+    margin-left: 76px;
+}
+
+.container .content {
+    margin-left: 76px;
 }
 
 

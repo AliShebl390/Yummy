@@ -155,5 +155,7 @@ function displayMealData(meal) {
 
 // Serach
 function search() {
+    let serchName = document.querySelector(".searchName");
+    console.log(serchName);
     displayData([]);
 }
