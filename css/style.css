@@ -148,9 +148,19 @@ nav {
     cursor: pointer;
 }
 
-@media only screen and (max-width: 400px) {.meal-details {
-    z-index: 1000;
-}}
+@media only screen and (max-width: 900px) {
+    .meal-details {
+        display: none;
+        z-index: 9099;
+        inset: 0;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .meal-details {
+        padding-left: 76px;
+    }
+}
 
 /* End meal details */
 /* Search */
@@ -159,14 +169,9 @@ nav {
         margin-left: 76px;
     }
 
-    .meal-details {
-        margin-left: 76px;
-    }
-
     .container .content {
         margin-left: 76px;
     }
-
 }
 
 
