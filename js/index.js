@@ -55,10 +55,10 @@ async function getData(meals = "") {
         // Display data form the logo
         let logo = document.querySelector(".logo");
         logo.addEventListener("click", () => {
-            displayData(response.meals.slice(0, 24));
+            getData();
+            closeNav();
             searchContainer.classList.remove("d-block");
             searchContainer.classList.add("d-none");
-            closeNav();
         });
     } catch (error) {}
     
@@ -103,7 +103,6 @@ async function getMealDetails(id) {
 
 // Display data
 function displayMealData(meal) {
-    $(".inner-loading-screen").fadeIn("500");
     let displayMealDeatails = document.getElementById("rowData");
     mealLayer.classList.remove("d-none");
     mealLayer.classList.add("d-block");
@@ -160,7 +159,6 @@ function displayMealData(meal) {
     <a target="_blank" href="${meal.strYoutube}"
         class="btn btn-danger">Youtube</a>
 </div>`;
-$(".inner-loading-screen").fadeOut("500");
 }
 
 // Serach
@@ -173,14 +171,12 @@ function search() {
 }
 
 function searchName() {
-    $(".inner-loading-screen").fadeIn("500");
     let NameInput = document.querySelector(".searchName");
     let mealName = "";
     NameInput.addEventListener("input", () => {
         mealName = NameInput.value;
         getData(mealName);
     });
-    $(".inner-loading-screen").fadeOut("500");
 }
 searchName();
 

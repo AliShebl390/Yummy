@@ -101,15 +101,11 @@ nav {
 
 /* End button animation */
 /* Loadig animation*/
-.loading-screen {
-    z-index: 999;
-    display: flex;
-    inset: 0;
-}
 .inner-loading-screen {
     z-index: 999;
     inset: 0;
     display: flex;
+    position: absolute;
 }
 
 /* End Loadig animation*/
