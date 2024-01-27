@@ -61,7 +61,7 @@ async function getData(meals = "") {
             searchContainer.classList.add("d-none");
         });
     } catch (error) {}
-    
+
     $(".inner-loading-screen").fadeOut(300);
 }
 
@@ -202,3 +202,148 @@ function searchLetter() {
     });
 }
 searchLetter();
+
+// category
+function catigory() {
+    getGategory();
+    displayData([]);
+    closeNav();
+    searchContainer.classList.remove("d-block");
+    searchContainer.classList.add("d-none");
+}
+async function getGategory() {
+    try {
+        let response = await (
+            await fetch(
+                "https://www.themealdb.com/api/json/v1/1/categories.php"
+            )
+        ).json();
+        displayGatData(response.categories);
+    } catch (error) {}
+}
+
+function displayGatData(categories) {
+    let result = ``;
+    let displayData = document.querySelector("#displayData");
+    categories.forEach((category) => {
+        result += `<div onclick="getMealByCat('${
+            category.strCategory
+        }')" class="col-md-4 col-lg-3">
+        <div class="meal position-relative rounded-2">
+            <img class="w-100" src="${category.strCategoryThumb}"
+                alt="" srcset="">
+            <div class="meal-layer text-center position-absolute">
+                <h3>${category.strCategory}</h3>
+                <p class="px-3">${category.strCategoryDescription
+                    .split(" ")
+                    .slice(0, 20)
+                    .join(" ")}</p>
+            </div>
+        </div>
+    </div>`;
+    });
+    displayData.innerHTML = result;
+}
+
+async function getMealByCat(cat) {
+    try {
+        let response = await (
+            await fetch(
+                `https://www.themealdb.com/api/json/v1/1/filter.php?c=${cat}`
+            )
+        ).json();
+        displayData(response.meals.slice(0, 20));
+    } catch (error) {}
+}
+
+// Area
+
+function area() {
+    displayData([]);
+    getArea();
+    closeNav();
+    searchContainer.classList.remove("d-block");
+    searchContainer.classList.add("d-none");
+}
+async function getArea() {
+    try {
+        let response = await (
+            await fetch(
+                "https://www.themealdb.com/api/json/v1/1/list.php?a=list"
+            )
+        ).json();
+        displayArea(response.meals);
+    } catch (error) {}
+}
+
+function displayArea(areas) {
+    let result = ``;
+    let displayData = document.querySelector("#displayData");
+    areas.forEach((area) => {
+        result += `<div onclick="getMealByArea('${area.strArea}')" class="col-md-4 col-lg-3">
+        <div class="meal d-flex align-items-center flex-column rounded-2">
+            <i class="fa-solid fa-house-laptop fa-4x"></i>
+            <h3 class="text-white">${area.strArea}</h3>
+        </div>
+    </div>`;
+    });
+    displayData.innerHTML = result;
+}
+
+async function getMealByArea(area) {
+    try {
+        let response = await (
+            await fetch(
+                `https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`
+            )
+        ).json();
+        displayData(response.meals.slice(0, 20));
+    } catch (error) {}
+}
+
+// Ingredients
+
+function ingredients() {
+    displayData([]);
+    getIngredients();
+    closeNav();
+    searchContainer.classList.remove("d-block");
+    searchContainer.classList.add("d-none");
+}
+async function getIngredients() {
+    try {
+        let response = await (
+            await fetch(
+                "https://www.themealdb.com/api/json/v1/1/list.php?i=list"
+            )
+        ).json();
+        displayIngredients(response.meals.slice(0, 20));
+    } catch (error) {}
+}
+
+function displayIngredients(ingredients) {
+    let result = ``;
+    let displayData = document.querySelector("#displayData");
+    ingredients.forEach((ing) => {
+        result += `<div onclick="getMealByIng('${ing.strIngredient}')" class="col-md-4 col-lg-3">
+        <div class="meal d-flex align-items-center flex-column rounded-2">
+            <i class="fa-solid fa-house-laptop fa-4x"></i>
+            <h3 class="text-white text-center">${ing.strIngredient}</h3>
+        </div>
+    </div>`;
+    });
+    displayData.innerHTML = result;
+}
+
+async function getMealByIng(ing) {
+    try {
+        let response = await (
+            await fetch(
+                `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ing}`
+            )
+        ).json();
+        displayData(response.meals.slice(0, 20));
+    } catch (error) {
+        console.log(error);
+    }
+}
