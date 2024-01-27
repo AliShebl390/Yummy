@@ -5,10 +5,11 @@ body {
 
 .logo {
     width: 50px;
+    cursor: pointer;
 }
 
 i,
-ul li {
+ul.links {
     cursor: pointer;
 }
 
@@ -27,6 +28,25 @@ nav {
 .nav-content {
     background-color: #121212;
 }
+
+/* Scroll-bar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #cacacac2;
+    border: 1px solid #cacacac2;
+    box-shadow: inset 0 0 6px #0000006d;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #121212;
+}
+
+/* End Scroll-bar */
 
 /* button animation*/
 
@@ -89,9 +109,6 @@ nav {
 
 /* End Loadig animation*/
 /* main */
-.container .content {
-    margin-left: 60px;
-}
 
 .meal {
     overflow: hidden;
@@ -116,3 +133,37 @@ nav {
 }
 
 /* End main */
+/* meal details */
+.meal-details {
+    display: none;
+    z-index: 999;
+    inset: 0;
+}
+
+.meal-details i {
+    font-size: 3rem;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+}
+
+/* End meal details */
+/* Search */
+@media only screen and (max-width: 900px) {
+    .search-container {
+        margin-left: 76px;
+    }
+
+    .meal-details {
+        margin-left: 76px;
+    }
+
+    .container .content {
+        margin-left: 76px;
+    }
+
+}
+
+
+/* End Search */

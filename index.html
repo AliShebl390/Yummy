@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
     <link rel="shortcut icon" href="imgs/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -20,7 +21,7 @@
     <nav class="d-flex min-vh-100 position-fixed top-0" style="left: -256.569px">
         <div class="nav-content d-flex flex-column justify-content-between p-4">
             <ul class="links list-unstyled overflow-hidden">
-                <li class="py-2 my-2 position-relative cursor-pointer">Search</li>
+                <li class="py-2 my-2 position-relative cursor-pointer" onclick="search()">Search</li>
                 <li class="py-2 my-2 position-relative cursor-pointer">Categories</li>
                 <li class="py-2 my-2 position-relative cursor-pointer">Area</li>
                 <li class="py-2 my-2 position-relative cursor-pointer">Ingredients</li>
@@ -60,10 +61,32 @@
     <main>
         <section class="container">
             <div class="content py-4 row g-4" id="displayData">
-                
             </div>
         </section>
     </main>
+    <section>
+        <div class="meal-details position-fixed h-100 overflow-auto bg-black justify-content-center align-items-center">
+            <i class="closeDetails fa-solid fa-xmark"></i>
+            <div class="container mt-2 pt-5">
+                <div class="row py-5 g-4 " id="rowData">
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="search-container">
+        <div class="container">
+            <div class="row pt-4">
+                <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control" placeholder="Meal Name:">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Meal First letter">
+                </div>
+            </div>
+        </div>
+    </section>
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/index.js"></script>
