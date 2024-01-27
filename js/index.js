@@ -1,7 +1,3 @@
-$(document).ready(() => {
-    $(".loading-screen").fadeOut();
-});
-
 // Nav features
 function openNav() {
     $("nav").animate(
@@ -33,6 +29,8 @@ function closeNav() {
         },
         500
     );
+
+    $(".menu-button").removeClass("opened");
 }
 
 closeNav();
@@ -45,16 +43,26 @@ $(".menu-button").click(() => {
 });
 
 // fetch Data
-async function getData() {
-    let response = await (
-        await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=`)
-    ).json();
-    displayData(response.meals.slice(0, 24));
-    // Display data form the logo
-    let logo = document.querySelector(".logo");
-    logo.addEventListener("click", () => {
+async function getData(meals = "") {
+    try {
+        $(".inner-loading-screen").fadeIn(300);
+        let response = await (
+            await fetch(
+                `https://www.themealdb.com/api/json/v1/1/search.php?s=${meals}`
+            )
+        ).json();
         displayData(response.meals.slice(0, 24));
-    });
+        // Display data form the logo
+        let logo = document.querySelector(".logo");
+        logo.addEventListener("click", () => {
+            displayData(response.meals.slice(0, 24));
+            searchContainer.classList.remove("d-block");
+            searchContainer.classList.add("d-none");
+            closeNav();
+        });
+    } catch (error) {}
+    
+    $(".inner-loading-screen").fadeOut(300);
 }
 
 // Display data
@@ -95,6 +103,7 @@ async function getMealDetails(id) {
 
 // Display data
 function displayMealData(meal) {
+    $(".inner-loading-screen").fadeIn("500");
     let displayMealDeatails = document.getElementById("rowData");
     mealLayer.classList.remove("d-none");
     mealLayer.classList.add("d-block");
@@ -151,11 +160,49 @@ function displayMealData(meal) {
     <a target="_blank" href="${meal.strYoutube}"
         class="btn btn-danger">Youtube</a>
 </div>`;
+$(".inner-loading-screen").fadeOut("500");
 }
 
 // Serach
+let searchContainer = document.querySelector(".search-container");
 function search() {
-    let serchName = document.querySelector(".searchName");
-    console.log(serchName);
     displayData([]);
+    closeNav();
+    searchContainer.classList.add("d-block");
+    searchContainer.classList.remove("d-none");
 }
+
+function searchName() {
+    $(".inner-loading-screen").fadeIn("500");
+    let NameInput = document.querySelector(".searchName");
+    let mealName = "";
+    NameInput.addEventListener("input", () => {
+        mealName = NameInput.value;
+        getData(mealName);
+    });
+    $(".inner-loading-screen").fadeOut("500");
+}
+searchName();
+
+async function getDataByFL(letter) {
+    try {
+        $(".inner-loading-screen").fadeIn("500");
+        let response = await (
+            await fetch(
+                `https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`
+            )
+        ).json();
+        displayData(response.meals);
+    } catch (error) {}
+    $(".inner-loading-screen").fadeOut("500");
+}
+
+function searchLetter() {
+    let searchFLetter = document.querySelector(".searchFLetter");
+    let mealName = "";
+    searchFLetter.addEventListener("input", () => {
+        mealName = searchFLetter.value;
+        getDataByFL(mealName);
+    });
+}
+searchLetter();

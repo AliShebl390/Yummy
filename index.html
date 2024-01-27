@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div class="loading-screen position-fixed bg-black justify-content-center align-items-center">
+    <div class="inner-loading-screen position-fixed bg-black justify-content-center align-items-center" style="display: none;">
         <i class="fa fa-spinner fa-spin fa-5x"></i>
     </div>
 
@@ -58,8 +58,20 @@
             </div>
         </div>
     </nav>
+    <section class="search-container d-none">
+        <div class="container">
+            <div class="row pt-4">
+                <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control searchName" placeholder="Meal Name:">
+                </div>
+                <div class="col-md-6">
+                    <input maxlength="1" type="text" class="form-control searchFLetter" placeholder="Meal First letter:">
+                </div>
+            </div>
+        </div>
+    </section>
     <main>
-        <section class="container d-none">
+        <section class="container">
             <div class="content py-4 row g-4" id="displayData">
             </div>
         </section>
@@ -73,18 +85,6 @@
                 </div>
             </div>
 
-        </div>
-    </section>
-    <section class="search-container">
-        <div class="container">
-            <div class="row pt-4">
-                <div class="col-md-6 mb-3">
-                    <input type="text" class="form-control searchName" placeholder="Meal Name:">
-                </div>
-                <div class="col-md-6">
-                    <input type="text" class="form-control searchFLetter" placeholder="Meal First letter:">
-                </div>
-            </div>
         </div>
     </section>
     <script src="js/jquery-3.6.0.min.js"></script>
