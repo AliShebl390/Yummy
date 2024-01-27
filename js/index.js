@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    $(".loading-screen").fadeOut(500);
+    $(".loading-screen").fadeOut();
 });
 
 function openNav() {
@@ -44,16 +44,18 @@ $(".menu-button").click(() => {
 });
 
 async function getData() {
-    let response = await (await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=`)).json();
-    displayData(response.meals)
+    $(".inner-loading-screen").fadeIn(300);
+    let response = await (
+        await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=`)
+    ).json();
+    displayData(response.meals);
+    $(".inner-loading-screen").fadeOut(300);
 }
 
-
 function displayData(meals) {
-    let result = ``
-    console.log();
-    let displayData = document.querySelector("#displayData")
-    meals.slice(0,24).forEach(meal => {
+    let result = ``;
+    let displayData = document.querySelector("#displayData");
+    meals.slice(0, 24).forEach((meal) => {
         result += `<div class="col-md-4 col-lg-3">
         <div class="meal position-relative rounded-2">
             <img class="w-100" src="${meal.strMealThumb}"
@@ -62,8 +64,8 @@ function displayData(meals) {
                 <h3>${meal.strMeal}</h3>
             </div>
         </div>
-    </div>`
+    </div>`;
     });
-    displayData.innerHTML = result
+    displayData.innerHTML = result;
 }
-getData()
+getData();
