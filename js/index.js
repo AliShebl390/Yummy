@@ -93,6 +93,7 @@ let closeDetails = document.querySelector(".closeDetails");
 
 closeDetails.addEventListener("click", () => {
     mealLayer.classList.add("d-none");
+    document.body.style.overflow = "auto";
 });
 
 async function getMealDetails(id) {
@@ -102,6 +103,7 @@ async function getMealDetails(id) {
         )
     ).json();
     displayMealData(response.meals[0]);
+    document.body.style.overflow = "hidden";
 }
 
 // Display data
