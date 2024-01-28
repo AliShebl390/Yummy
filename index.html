@@ -87,7 +87,7 @@
         <div class="meal-details position-fixed h-100 overflow-auto justify-content-center align-items-center">
             <i class="closeDetails fa-solid fa-xmark"></i>
             <div class="container mt-2 pt-5">
-                <div class="row py-5 g-4 " id="rowData">
+                <div class="row py-3 g-4 " id="rowData">
 
                 </div>
             </div>
@@ -129,14 +129,14 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="passIN">Password</label>
-                    <input type="text" id="passIN" oninput="validateregPass()" class="form-control"
+                    <input type="password" id="passIN" oninput="validateregPass()" class="form-control"
                         placeholder="exa-mple@589" required>
                     <div class="alert alert-danger text-capitalize d-none" id="passAlert">
                         Must contain at lesat on capital letter and more than 8 chars ,can contain symbols</div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="rePassIN">Re-Password</label>
-                    <input type="text" id="rePassIN" oninput="validateregRePass()" class="form-control"
+                    <input type="password" id="rePassIN" oninput="validateregRePass()" class="form-control"
                         placeholder="exa-mple@589" required>
                     <div class="alert alert-danger text-capitalize d-none" id="rePassAlert">Passwords do not match</div>
                 </div>
