@@ -1,6 +1,6 @@
 body {
-    background-color: #121212;
-    color: #f9f6f6;
+    background-color: #ccc;
+    color: #121212;
 }
 
 .logo {
@@ -15,6 +15,7 @@ ul.links {
 
 ul.links li {
     transition: 400ms;
+    color: #eee;
 }
 
 ul.links li:hover {
@@ -27,6 +28,16 @@ nav {
 
 .nav-content {
     background-color: #121212;
+}
+
+nav .linked {
+    font-size: 45px;
+    color: #121212;
+}
+nav .git {
+    font-size: 45px;
+    margin-bottom: 5px;
+    color: #eee;
 }
 
 /* Scroll-bar */
@@ -139,6 +150,7 @@ nav {
     display: none;
     z-index: 999;
     inset: 0;
+    background-color: #ccc;
 }
 
 .meal-details i {
@@ -166,18 +178,7 @@ nav {
 /* End meal details */
 /* Search */
 .search-container input {
-    background-color: #121212;
-    color: white;
     box-shadow: 0 0 10px #6767676d;
-}
-
-.search-container input:focus {
-    background-color: #121212;
-    color: white;
-}
-
-.search-container input::placeholder {
-    color: white;
 }
 
 .search-container {
@@ -189,3 +190,23 @@ nav {
 }
 
 /* End Search */
+/* Contact */
+form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 76px;
+}
+
+form button {
+    max-width: 200px;
+    margin-top: 20px;
+}
+
+form input:last-child {
+    margin-top: 5px;
+}
+@media only screen and (min-width: 767px) {
+    form {
+        min-width: 80%;
+    }
+}

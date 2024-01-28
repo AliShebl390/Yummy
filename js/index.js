@@ -59,6 +59,9 @@ async function getData(meals = "") {
             closeNav();
             searchContainer.classList.remove("d-block");
             searchContainer.classList.add("d-none");
+            document.body.style.overflow = "auto";
+            contactContainer.classList.remove("d-block");
+            contactContainer.classList.add("d-none");
         });
     } catch (error) {}
 
@@ -168,6 +171,9 @@ function search() {
     closeNav();
     searchContainer.classList.add("d-block");
     searchContainer.classList.remove("d-none");
+    document.body.style.overflow = "auto";
+    contactContainer.classList.remove("d-block");
+    contactContainer.classList.add("d-none");
 }
 
 function searchName() {
@@ -210,6 +216,9 @@ function catigory() {
     closeNav();
     searchContainer.classList.remove("d-block");
     searchContainer.classList.add("d-none");
+    document.body.style.overflow = "auto";
+    contactContainer.classList.remove("d-block");
+    contactContainer.classList.add("d-none");
 }
 async function getGategory() {
     try {
@@ -264,6 +273,9 @@ function area() {
     closeNav();
     searchContainer.classList.remove("d-block");
     searchContainer.classList.add("d-none");
+    document.body.style.overflow = "auto";
+    contactContainer.classList.remove("d-block");
+    contactContainer.classList.add("d-none");
 }
 async function getArea() {
     try {
@@ -283,7 +295,7 @@ function displayArea(areas) {
         result += `<div onclick="getMealByArea('${area.strArea}')" class="col-md-4 col-lg-3">
         <div class="meal d-flex align-items-center flex-column rounded-2">
             <i class="fa-solid fa-house-laptop fa-4x"></i>
-            <h3 class="text-white">${area.strArea}</h3>
+            <h3>${area.strArea}</h3>
         </div>
     </div>`;
     });
@@ -309,6 +321,9 @@ function ingredients() {
     closeNav();
     searchContainer.classList.remove("d-block");
     searchContainer.classList.add("d-none");
+
+    contactContainer.classList.remove("d-block");
+    contactContainer.classList.add("d-none");
 }
 async function getIngredients() {
     try {
@@ -328,7 +343,7 @@ function displayIngredients(ingredients) {
         result += `<div onclick="getMealByIng('${ing.strIngredient}')" class="col-md-4 col-lg-3">
         <div class="meal d-flex align-items-center flex-column rounded-2">
             <i class="fa-solid fa-house-laptop fa-4x"></i>
-            <h3 class="text-white text-center">${ing.strIngredient}</h3>
+            <h3 class="text-center">${ing.strIngredient}</h3>
         </div>
     </div>`;
     });
@@ -346,4 +361,162 @@ async function getMealByIng(ing) {
     } catch (error) {
         console.log(error);
     }
+}
+
+// contact
+let contactContainer = document.querySelector(".contact-container");
+function contact() {
+    displayData([]);
+    closeNav();
+    document.body.style.overflow = "hidden";
+    contactContainer.classList.add("d-block");
+    contactContainer.classList.remove("d-none");
+    searchContainer.classList.remove("d-block");
+    searchContainer.classList.add("d-none");
+}
+
+// validation<script>
+let userName = document.getElementById("nameIN");
+let phone = document.getElementById("phoneIN");
+let userEmail = document.getElementById("emailIN");
+let age = document.getElementById("ageIN");
+let userPassword = document.getElementById("passIN");
+let userRePassword = document.getElementById("rePassIN");
+let btnSub = document.getElementById("btnSub");
+
+let userNameAlet = document.getElementById("nameAlert");
+let phoneAlet = document.getElementById("phoneAlert");
+let userEmailAlet = document.getElementById("emailAlert");
+let ageAlet = document.getElementById("ageAlert");
+let userPasswordAlet = document.getElementById("passAlert");
+let userRePasswordAlet = document.getElementById("rePassAlert");
+
+function validateregName() {
+    let regNameRegax = /^[a-zA-Z0-9_ ]{3,16}$/;
+    if (regNameRegax.test(userName.value)) {
+        userName.classList.add("is-valid");
+        userName.classList.remove("is-invalid");
+        userNameAlet.classList.add("d-none");
+        return true;
+    } else {
+        userName.classList.remove("is-valid");
+        userName.classList.add("is-invalid");
+        userNameAlet.classList.remove("d-none");
+        return false;
+    }
+}
+
+function validateregEmail() {
+    let regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (regEmail.test(userEmail.value)) {
+        userEmail.classList.add("is-valid");
+        userEmail.classList.remove("is-invalid");
+        userEmailAlet.classList.add("d-none");
+        return true;
+    } else {
+        userEmail.classList.remove("is-valid");
+        userEmail.classList.add("is-invalid");
+        userEmailAlet.classList.remove("d-none");
+        return false;
+    }
+}
+
+function validateregPass() {
+    let regPassRegax = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    // must contain at least one capital letter and more than 8 chars, can contain symbols
+    if (regPassRegax.test(userPassword.value)) {
+        userPassword.classList.add("is-valid");
+        userPassword.classList.remove("is-invalid");
+        userPasswordAlet.classList.add("d-none");
+        return true;
+    } else {
+        userPassword.classList.remove("is-valid");
+        userPassword.classList.add("is-invalid");
+        userPasswordAlet.classList.remove("d-none");
+        return false;
+    }
+}
+
+function validateregRePass() {
+    if (userPassword.value == userRePassword.value) {
+        userRePassword.classList.add("is-valid");
+        userRePassword.classList.remove("is-invalid");
+        userRePasswordAlet.classList.add("d-none");
+        return true;
+    } else {
+        userRePassword.classList.remove("is-valid");
+        userRePassword.classList.add("is-invalid");
+        userRePasswordAlet.classList.remove("d-none");
+        return false;
+    }
+}
+
+function validateAgeReg() {
+    let agePattern = /^[0-9]+$/;
+    // must contain at least one capital letter and more than 8 chars, can contain symbols
+    if (agePattern.test(age.value) && age.value >= 10) {
+        age.classList.add("is-valid");
+        age.classList.remove("is-invalid");
+        ageAlet.classList.add("d-none");
+        return true;
+    } else {
+        age.classList.remove("is-valid");
+        age.classList.add("is-invalid");
+        ageAlet.classList.remove("d-none");
+        return false;
+    }
+}
+
+function validatePhoneReg() {
+    let phonePattern = /^\d{11}$/;
+    if (phonePattern.test(phone.value)) {
+        phone.classList.add("is-valid");
+        phone.classList.remove("is-invalid");
+        phoneAlet.classList.add("d-none");
+        return true;
+    } else {
+        phone.classList.remove("is-valid");
+        phone.classList.add("is-invalid");
+        phoneAlet.classList.remove("d-none");
+        return false;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    document
+        .getElementById("btnSub")
+        .addEventListener("click", function (event) {
+            if (!validateForm()) {
+                event.preventDefault();
+                btnSub.disabled = true;
+            }
+        });
+
+    // Adding an event listener to the form to dynamically enable/disable the submit button
+    document.querySelector("form").addEventListener("input", function () {
+        if (
+            validatePhoneReg() &&
+            validateAgeReg() &&
+            validateregRePass() &&
+            validateregPass() &&
+            validateregEmail() &&
+            validateregName()
+        ) {
+            document.getElementById("btnSub").disabled = false;
+        } else {
+            document.getElementById("btnSub").disabled = true;
+        }
+    });
+});
+
+// Function to validate the entire form
+function validateForm() {
+    return (
+        validatePhoneReg() &&
+        validateAgeReg() &&
+        validateregRePass() &&
+        validateregPass() &&
+        validateregEmail() &&
+        validateregName()
+    );
 }

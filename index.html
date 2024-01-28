@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    <!-- Loading -->
     <div class="inner-loading-screen position-fixed bg-black justify-content-center align-items-center"
         style="display: none;">
         <i class="fa fa-spinner fa-spin fa-5x"></i>
@@ -26,18 +27,17 @@
                 <li class="py-2 my-2 position-relative cursor-pointer" onclick="catigory()">Categories</li>
                 <li class="py-2 my-2 position-relative cursor-pointer" onclick="area()">Area</li>
                 <li class="py-2 my-2 position-relative cursor-pointer" onclick="ingredients()">Ingredients</li>
-                <li class="py-2 my-2 position-relative cursor-pointer">Contact Us</li>
+                <li class="py-2 my-2 position-relative cursor-pointer" onclick="contact()">Contact Us</li>
             </ul>
-            <div class="nav-footer">
-                <div class="icons">
-                    <i class="fa-brands fa-facebook"></i>
-                    <i class="fa-brands fa-twitter"></i>
-                    <i class="fa-solid fa-globe"></i>
-                </div>
-                <div class="footer">
-                    <p>Copyright Â© 2019 All Rights <br>Reserved.</p>
-                </div>
+            <div class="nav-footer text-white">
+                <a target="_blank" href="https://github.com/AliShebl390">
+                    <div class="icons"><i class="fa-brands git fa-github"></i>
+                </a>
             </div>
+            <div class="footer">
+                <p>Copyright Â© 2019 All Rights <br>Reserved.</p>
+            </div>
+        </div>
         </div>
         <div
             class="nav-outer bg-white d-flex text-black flex-column justify-content-between align-items-center px-2 py-4">
@@ -54,11 +54,13 @@
                 </svg>
             </button>
             <div>
-                <i class="fa-solid fa-globe d-block"></i>
-                <i class="fa-solid fa-share-nodes"></i>
+                <a target="_blank" href="https://www.linkedin.com/in/ali-shebl/">
+                    <i class="fa-brands linked fa-linkedin"></i>
+                </a>
             </div>
         </div>
     </nav>
+    <!-- Search -->
     <section class="search-container d-none">
         <div class="container">
             <div class="row pt-4">
@@ -72,15 +74,17 @@
             </div>
         </div>
     </section>
+    <!-- home -->
     <main>
-        <section class="container">
+        <section class="container ">
             <div class="content py-4 row g-4" id="displayData">
-                
+
             </div>
         </section>
     </main>
+    <!-- meal details -->
     <section>
-        <div class="meal-details position-fixed h-100 overflow-auto bg-black justify-content-center align-items-center">
+        <div class="meal-details position-fixed h-100 overflow-auto justify-content-center align-items-center">
             <i class="closeDetails fa-solid fa-xmark"></i>
             <div class="container mt-2 pt-5">
                 <div class="row py-5 g-4 " id="rowData">
@@ -90,7 +94,56 @@
 
         </div>
     </section>
-
+    <!-- Inputs -->
+    <section class="container contact-container d-flex justify-content-center align-items-center min-vh-100 d-none">
+        <form>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="nameAlert">Name</label>
+                    <input type="text" id="nameIN" oninput="validateregName()" class="form-control"
+                        placeholder="Aly shebl" value="" required>
+                    <div class="alert alert-danger text-capitalize d-none" id="nameAlert">Name must be more than 3 chars
+                        and less than 16</div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="phoneIN">Phone Number</label>
+                    <input type="text" id="phoneIN" oninput="validatePhoneReg()" class="form-control"
+                        placeholder="example: 0101415698" value="" required>
+                    <div class="alert alert-danger text-capitalize d-none" id="phoneAlert">Invalid phone number format.
+                        It should contain exactly 11 digits.</div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="emailIN">Email</label>
+                    <input type="email" id="emailIN" oninput="validateregEmail()" class="form-control"
+                        placeholder="example@example.eg" value="" required>
+                    <div class="alert alert-danger text-capitalize d-none" id="emailAlert">Invalid email address</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="ageIN">Age</label>
+                    <input type="text" id="ageIN" oninput="validateAgeReg()" class="form-control"
+                        placeholder="example: 15" required>
+                    <div class="alert alert-danger text-capitalize d-none" id="ageAlert">Invalid age format or younger
+                        than 10</div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="passIN">Password</label>
+                    <input type="text" id="passIN" oninput="validateregPass()" class="form-control"
+                        placeholder="exa-mple@589" required>
+                    <div class="alert alert-danger text-capitalize d-none" id="passAlert">
+                        Must contain at lesat on capital letter and more than 8 chars ,can contain symbols</div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="rePassIN">Re-Password</label>
+                    <input type="text" id="rePassIN" oninput="validateregRePass()" class="form-control"
+                        placeholder="exa-mple@589" required>
+                    <div class="alert alert-danger text-capitalize d-none" id="rePassAlert">Passwords do not match</div>
+                </div>
+            </div>
+            <button class="btn btn-warning text-white" id="btnSub" type="submit">Submit form</button>
+        </form>
+    </section>
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/index.js"></script>
