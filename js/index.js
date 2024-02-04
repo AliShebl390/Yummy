@@ -247,7 +247,7 @@ function displayGatData(categories) {
                 <h3>${category.strCategory}</h3>
                 <p class="px-3">${category.strCategoryDescription
                     .split(" ")
-                    .slice(0, 20)
+                    .slice(0, 15)
                     .join(" ")}</p>
             </div>
         </div>
@@ -495,7 +495,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     // Adding an event listener to the form to dynamically enable/disable the submit button
-    document.querySelector("form").addEventListener("input", function () {
+    document.querySelector("form").addEventListener("blur", function () {
         if (
             validatePhoneReg() &&
             validateAgeReg() &&
